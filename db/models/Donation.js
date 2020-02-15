@@ -29,4 +29,4 @@ const Donation = new Schema({
   date: { type: Date, default: Date.now, required: true, },
 });
 
-module.exports = Donation = mongoose.model('Donation', schema);
+module.exports = mongoose.model('Donation', Donation);
