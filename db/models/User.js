@@ -1,16 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const User = new Schema({
   type: {
-    type: String,
-    required: true
-  },
-  username: {
-    type: String,
-    required: true
-  },
-  password: {
     type: String,
     required: true
   },
@@ -26,9 +18,15 @@ const User = new Schema({
     type: String,
     required: true
   },
-  geoLocation: {
-    type: String,
-    required: true
+  position: {
+    lat: {
+      type: Number,
+      required: true
+    },
+    long: {
+      type: Number,
+      required: true
+    }
   },
   pointOfContact: {
     name: {
@@ -46,4 +44,4 @@ const User = new Schema({
   }
 });
 
-module.exports = mongoose.model("User", User);
+module.exports = mongoose.model('User', User);
