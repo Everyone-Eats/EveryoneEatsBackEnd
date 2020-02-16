@@ -232,4 +232,4 @@ _Retrieves a user by id._
 
 - **Sample Call:**
 
-  axios.get('/api/users/5e48c66020f1e5257ba9cf8f')
+  axios.get('/api/users/5e48c66020f1e5257ba9cf8d')
