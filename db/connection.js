@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { key, user, businesses } = require("./config/config");
+const { key, user, database } = require("./config/config");
 
 const options = {
   useNewUrlParser: true,
@@ -7,7 +7,7 @@ const options = {
 };
 
 const connection = mongoose.connect(
-  `mongodb+srv://${user}:${key}@everyone-eats-gltav.mongodb.net/${businesses}?retryWrites=true&w=majority`,
+  `mongodb+srv://${user}:${key}@everyone-eats-gltav.mongodb.net/${database}?retryWrites=true&w=majority`,
   options,
   err => {
     if (err) {
