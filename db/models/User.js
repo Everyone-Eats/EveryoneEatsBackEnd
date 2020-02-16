@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = { mongoose };
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const User = new Schema({
   type: {
@@ -46,4 +46,4 @@ const User = new Schema({
   }
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model("User", User);
