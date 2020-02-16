@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const key = require('./config');
+const key = require('./config/config');
 
 console.log(key);
 

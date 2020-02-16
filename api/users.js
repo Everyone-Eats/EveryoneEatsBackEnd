@@ -1,6 +1,6 @@
 const express = require("express");
+const { User } = require('../db');
 const router = express.Router();
-const { User } = require("../db");
 
 const createUser = async (req, res) => {
   try {
