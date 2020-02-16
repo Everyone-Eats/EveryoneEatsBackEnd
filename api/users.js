@@ -27,26 +27,17 @@ const updateUser = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    let userType;
-    let users;
-    let offset = 0;
-    let limit = 10;
-
-    if (req.query.limit) {
-      limit = Number(req.query.limit);
-    }
-    if (req.query.offset) {
-      offset = Number(req.query.offset);
-    }
-    if (req.query.type) {
-      userType = req.query.type;
-    }
-    const numRecords = User.countDocuments();
+    let { type, offset, limit } = req.query;
+    type = type ? type : undefined;
+    offset = offset ? Number(offset) : 0;
+    limit = limit ? Number(limit) : 10;
+    const numRecords = await User.countDocuments();
     const skipCount = limit * offset;
     const numPages = Math.ceil(numRecords / limit);
 
-    if (userType) {
-      users = await User.find({ type: userType })
+    let users;
+    if (type) {
+      users = await User.find({ type })
         .skip(skipCount)
         .limit(limit);
     } else {
@@ -56,7 +47,6 @@ const getAllUsers = async (req, res) => {
     }
 
     const meta = { numPages, offset, limit };
-
     res.status(200).json({ users, meta });
   } catch (err) {
     res.status(400);
