@@ -1,7 +1,7 @@
-require('./connection');
+require("./connection");
 
-const User = require('./models/User');
-const Donation = require('./models/Donation');
+const { User } = require("./models/User");
+const Donation = require("./models/Donation");
 
 const db = { User, Donation };
 
