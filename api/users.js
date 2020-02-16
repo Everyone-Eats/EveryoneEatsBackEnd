@@ -39,9 +39,8 @@ const getAllUsers = async (req, res) => {
       offset = Number(req.query.offset);
     }
     if (req.query.type) {
-      userType = req.params.type;
+      userType = req.query.type;
     }
-
     const numRecords = User.countDocuments();
     const skipCount = limit * offset;
     const numPages = Math.ceil(numRecords / limit);
