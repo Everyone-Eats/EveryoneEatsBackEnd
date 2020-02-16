@@ -1,11 +1,9 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const { userSchema } = require("./User");
 
 const Donation = new Schema({
-  donor: {
-    type: String,
-    required: true
-  },
+  donor: { type: userSchema, required: true },
   category: {
     type: String,
     required: true
