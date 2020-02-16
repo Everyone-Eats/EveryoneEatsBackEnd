@@ -1,6 +1,6 @@
 const express = require("express");
-const { User } = require('../db');
 const router = express.Router();
+const { User } = require("../db");
 
 const createUser = async (req, res) => {
   try {
@@ -27,23 +27,48 @@ const updateUser = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
-    console.log(2);
-    res.status(200).json(users);
+    let userType;
+    let users;
+    let offset = 0;
+    let limit = 10;
+
+    if (req.query.limit) {
+      limit = Number(req.query.limit);
+    }
+    if (req.query.offset) {
+      offset = Number(req.query.offset);
+    }
+    if (req.query.type) {
+      userType = req.params.type;
+    }
+
+    const numRecords = User.countDocuments();
+    const skipCount = limit * offset;
+    const numPages = Math.ceil(numRecords / limit);
+
+    if (userType) {
+      users = await User.find({ type: userType })
+        .skip(skipCount)
+        .limit(limit);
+    } else {
+      users = await User.find()
+        .skip(skipCount)
+        .limit(limit);
+    }
+
+    const meta = { numPages, offset, limit };
+
+    res.status(200).json({ users, meta });
   } catch (err) {
-    console.log("in err");
-    res.setStatus(400);
+    res.status(400);
     console.log(err);
   }
 };
 
 const getUser = async (req, res) => {
-  console.log("hi");
   try {
     const { id } = req.params;
-    console.log("here");
     const users = await User.findById(id);
-    console.log("here");
     res.status(200).json(users);
   } catch (err) {
     res.setStatus(400);
@@ -66,6 +91,6 @@ router.post("/", createUser);
 router.put("/:id", updateUser);
 router.delete(":/id", deleteUser);
 router.get("/:id", getUser);
-router.get("/", getAllUsers);
+router.get("/?", getAllUsers);
 
 module.exports = router;
