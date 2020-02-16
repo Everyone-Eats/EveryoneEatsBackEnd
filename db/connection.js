@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { key, user, businesses } = require('./config/config');
+const mongoose = require("mongoose");
+const { key, user, businesses } = require("./config/config");
 
 const options = {
   useNewUrlParser: true,
@@ -13,7 +13,7 @@ const connection = mongoose.connect(
     if (err) {
       console.log(err);
     } else {
-      console.log('db is connected');
+      console.log("db is connected");
     }
   }
 );
