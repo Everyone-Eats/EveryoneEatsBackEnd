@@ -78,7 +78,7 @@ const deleteUser = async (req, res) => {
 
 router.post("/", createUser);
 router.put("/:id", updateUser);
-router.delete(":/id", deleteUser);
+router.delete("/:id", deleteUser);
 router.get("/:id", getUser);
 router.get("/?", getAllUsers);
 
