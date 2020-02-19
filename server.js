@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 const express = require('express');
-=======
-const express = require("express");
-const cors = require("cors");
->>>>>>> 72772e9d84e2c086a8c50da82ec563d41b9b096c
-const app = express();
 const cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
