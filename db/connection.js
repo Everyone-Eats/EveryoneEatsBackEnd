@@ -7,7 +7,7 @@ const options = {
 };
 
 const connection = mongoose.connect(
-  `mongodb+srv://every-admin-eats:${key}@everyone-eats-gltav.mongodb.net/test?retryWrites=true&w=majority`,
+  `mongodb+srv://every-admin-eats:${key}@everyone-eats-gltav.mongodb.net/Businesses?retryWrites=true&w=majority`,
   options,
   err => {
     if (err) {
