@@ -30,17 +30,11 @@ const updateDonation = async (req, res) => {
 };
 
 const getAllDonations = async (req, res) => {
-  let offset = 0;
-  let limit = 10;
+  let { offset, limit } = req.query;
+  offset = offset ? Number(offset) : 0;
+  limit = limit ? Number(limit) : 10;
 
-  if (req.query.limit) {
-    limit = Number(req.query.limit);
-  }
-  if (req.query.offset) {
-    offset = Number(req.query.offset);
-  }
-
-  const numRecords = User.countDocuments();
+  const numRecords = await User.countDocuments();
   const skipCount = limit * offset;
   const numPages = Math.ceil(numRecords / limit);
 
