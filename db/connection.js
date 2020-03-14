@@ -7,11 +7,7 @@ const options = {
 };
 
 const connection = mongoose.connect(
-<<<<<<< HEAD
-  `mongodb+srv://every-admin-eats:${key}@everyone-eats-gltav.mongodb.net/Businesses?retryWrites=true&w=majority`,
-=======
   `mongodb+srv://${user}:${key}@everyone-eats-gltav.mongodb.net/${database}?retryWrites=true&w=majority`,
->>>>>>> 72772e9d84e2c086a8c50da82ec563d41b9b096c
   options,
   err => {
     if (err) {
